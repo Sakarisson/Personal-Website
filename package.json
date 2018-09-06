@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A starter kit for React projects based on React with Mobx, running on Express, compiled with Webpack",
   "scripts": {
-    "start": "npm install & npm run build && npm run server",
+    "start": "npm install && npm run build && npm run server",
     "server": "nodemon src/server/index.js",
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
