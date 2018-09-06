@@ -3,10 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'babel-polyfill';
 
+import Home from 'Pages/Home';
+
 const App = () => (
-  <div>
-    Welcome to React, Webpack4, Mobx, Express starter kit.
-  </div>
+  <Home />
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));
