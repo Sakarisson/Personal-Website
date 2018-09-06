@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
@@ -38,8 +38,10 @@ const CloseButton = () => (
   />
 );
 
-export default () => [
-  <CloseButton />,
-  <MinimizeButton />,
-  <ZoomButton />,
-];
+export default () => (
+  <Fragment>
+    <CloseButton />
+    <MinimizeButton />
+    <ZoomButton />
+  </Fragment>
+);
