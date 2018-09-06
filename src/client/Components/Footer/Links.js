@@ -11,12 +11,11 @@ const links = {
 const Links = () => {
   const navLinks = [];
   const keys = Object.keys(links);
-  keys.forEach((key, index) => {
+  keys.forEach((key) => {
     navLinks.push(<NavLink href={links[key]} key={key}>{key}</NavLink>);
-    if (index < keys.length - 1) {
-      navLinks.push(' | ');
-    }
+    navLinks.push(' | ');
   });
+  navLinks.pop();
   return navLinks;
 };
 
