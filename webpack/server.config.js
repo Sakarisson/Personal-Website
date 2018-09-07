@@ -9,7 +9,7 @@ const baseOutputDirectory = path.join(__dirname, 'build');
 const srcOutputDirectory = path.join(baseOutputDirectory, 'src');
 
 module.exports = (outputDir = srcOutputDirectory) => ({
-  entry: './src/server/index.js',
+  entry: ['babel-polyfill', './src/server/index.js'],
   target: 'node',
   node: {
     __dirname: false,

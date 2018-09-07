@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-import 'babel-polyfill';
 import app from './app';
 
 let port = process.env.SERVER_PORT;

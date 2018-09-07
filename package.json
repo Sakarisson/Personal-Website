@@ -4,7 +4,7 @@
   "description": "My personal website",
   "scripts": {
     "start": "npm run build && npm run productionServer",
-    "devServer": "webpack -w --mode development & nodemon build/src/server.js --mode development",
+    "devServer": "nodemon --exec babel-node src/server/index.js --mode development",
     "productionServer": "node build/src/server.js",
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Sakarisson/Personal-Website#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
