@@ -2,6 +2,17 @@ doctype
 html
   head
     title Sakarisson.com
+    meta(charset='utf-8')
+    meta(name='HandheldFriendly' content='true')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')
+    meta(name='theme-color' content='#1d1f21')
+    meta(name='description' content="Kristian's site")
+    meta(name='hostname' content='sakarisson.com')
+    meta(property='og:type' content='website')
+    meta(property='og:title' content="Kristian's page")
+    meta(property='og:url' content='https://sakarisson.com')
+    meta(property='og:site_name' content='Sakarisson.com')
+    meta(property='og:description' content="Kristian's site")
   body
     noscript
       | Welcome to Kristian Sakarisson's page. You should probably enable JavaScript.
@@ -9,7 +20,7 @@ html
       if bundle
         != bundle
     if styleTags
-      style!= styleTags
+      != styleTags
     if !dev
       script!='var initialData=' + JSON.stringify(initialData)
       script(src=`${bundleSrc}`)
