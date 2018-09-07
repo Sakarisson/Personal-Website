@@ -23,4 +23,4 @@ html
       != styleTags
     if !dev
       script!='var initialData=' + JSON.stringify(initialData)
-      script(src=`${bundleSrc}`)
+      script(src=`${bundleSrc}` defer)
