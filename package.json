@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack4-mobx-express-starter",
+  "name": "personal-website",
   "version": "1.0.0",
-  "description": "A starter kit for React projects based on React with Mobx, running on Express, compiled with Webpack",
+  "description": "My personal website",
   "scripts": {
     "start": "npm run build && npm run productionServer",
     "devServer": "nodemon src/server/index.js --mode development",
@@ -12,22 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sakarisson/react-webpack4-mobx-express-starter.git"
+    "url": "git+https://github.com/Sakarisson/Personal-Website.git"
   },
-  "keywords": [
-    "react",
-    "mobx",
-    "webpack",
-    "express",
-    "nodejs",
-    "starter"
-  ],
   "author": "kristian@sakarisson.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Sakarisson/react-webpack4-mobx-express-starter/issues"
+    "url": "https://github.com/Sakarisson/Personal-Website/issues"
   },
-  "homepage": "https://github.com/Sakarisson/react-webpack4-mobx-express-starter#readme",
+  "homepage": "https://github.com/Sakarisson/Personal-Website#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
