@@ -13,5 +13,6 @@ const App = () => (
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ReactGA.initialize('UA-85011695-2');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 export default App;
