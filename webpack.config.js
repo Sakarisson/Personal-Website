@@ -42,8 +42,7 @@ module.exports = (env, argv) => {
 
   let devPort = process.env.DEV_SERVER_PORT;
 
-  if (devPort == null && __DEV__) {
-    console.warn('DEV_SERVER_PORT not specified in .env, assuming 3000');
+  if (devPort == null) {
     devPort = 3000;
   }
 
@@ -108,5 +107,5 @@ module.exports = (env, argv) => {
     ],
   };
 
-  return [serverConfig, clientConfig];
+  return [clientConfig, serverConfig];
 };
