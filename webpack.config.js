@@ -2,26 +2,17 @@
 
 require('dotenv').config();
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 const pug = require('pug');
 const fs = require('fs');
 
 const baseOutputDirectory = path.join(__dirname, 'build');
 const srcOutputDirectory = path.join(baseOutputDirectory, 'src');
 const htmlOutputDirectory = path.join(baseOutputDirectory, 'html');
-
-let devPort = process.env.DEV_SERVER_PORT;
-
-if (devPort == null) {
-  console.warn('DEV_SERVER_PORT not specified in .env, assuming 3000');
-  devPort = 3000;
-}
-
-if (!fs.existsSync(baseOutputDirectory)) {
-  fs.mkdirSync(baseOutputDirectory);
-}
 
 module.exports = (env, argv) => {
   const __DEV__ = argv.mode === 'development';
@@ -49,7 +40,18 @@ module.exports = (env, argv) => {
     plugins.push(htmlPlugin);
   }
 
-  return {
+  let devPort = process.env.DEV_SERVER_PORT;
+
+  if (devPort == null && __DEV__) {
+    console.warn('DEV_SERVER_PORT not specified in .env, assuming 3000');
+    devPort = 3000;
+  }
+
+  if (!fs.existsSync(baseOutputDirectory)) {
+    fs.mkdirSync(baseOutputDirectory);
+  }
+
+  const clientConfig = {
     entry: './src/client/index.js',
     output: {
       path: srcOutputDirectory,
@@ -77,4 +79,34 @@ module.exports = (env, argv) => {
     },
     plugins,
   };
+
+  const serverConfig = {
+    entry: './src/server/index.js',
+    target: 'node',
+    node: {
+      __dirname: false,
+      __filename: false,
+    },
+    externals: [nodeExternals()],
+    output: {
+      path: srcOutputDirectory,
+      filename: 'server.js',
+      publicPath: '/',
+    },
+    module: {
+      rules: [
+        { test: /\.(js)$/, use: 'babel-loader' },
+      ],
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        __isBrowser__: 'false',
+      }),
+      new webpack.DefinePlugin({
+        __isWebpack__: true,
+      }),
+    ],
+  };
+
+  return [serverConfig, clientConfig];
 };

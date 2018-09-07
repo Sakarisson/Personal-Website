@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 let paths = null;
 try {
-  // eslint-disable-next-line
-  paths = require('../../../build/src/manifest.json');
+  const manifestPath = path.join(global.__basedir, '..', 'build', 'src', 'manifest.json');
+  paths = fs.readFileSync(manifestPath);
+  paths = JSON.parse(paths.toString());
 } catch (e) {
   // probably dev
 }
@@ -12,7 +14,7 @@ try {
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '..', '..', 'views'));
+app.set('views', path.join(global.__basedir, 'views'));
 
 /**
  * Simple middleware to initialize initialData variable

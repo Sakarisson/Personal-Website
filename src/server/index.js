@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 require('dotenv').config();
+require('babel-polyfill');
 
 const app = require('./app');
 
