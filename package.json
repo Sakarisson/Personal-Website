@@ -4,7 +4,7 @@
   "description": "My personal website",
   "scripts": {
     "start": "npm run build && npm run productionServer",
-    "devServer": "nodemon src/server/index.js --mode development",
+    "devServer": "webpack -w --mode development & nodemon build/src/server.js --mode development",
     "productionServer": "node build/src/server.js",
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",

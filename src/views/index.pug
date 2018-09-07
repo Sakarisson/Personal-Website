@@ -3,8 +3,13 @@ html
   head
     title Sakarisson.com
   body
-    noscript Welcome to Kristian Sakarisson's page. You need JavaScript to view it.
+    noscript
+      | Welcome to Kristian Sakarisson's page. You should probably enable JavaScript.
     div#root
+      if bundle
+        != bundle
+    if styleTags
+      style!= styleTags
     if !dev
       script!='var initialData=' + JSON.stringify(initialData)
       script(src=`${bundleSrc}`)

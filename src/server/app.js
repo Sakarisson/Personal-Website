@@ -1,8 +1,8 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const compression = require('compression');
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import compression from 'compression';
 
 try {
   // The 'webpack' boolean gets set to true in webpack.config.js.

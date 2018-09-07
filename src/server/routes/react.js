@@ -1,6 +1,11 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
+import React from 'react';
+import express from 'express';
+import path from 'path';
+import fs from 'fs';
+import { renderToString } from 'react-dom/server';
+import { ServerStyleSheet } from 'styled-components';
+
+import App from '../../client/Pages/Home';
 
 let paths = null;
 try {
@@ -32,11 +37,16 @@ const initialDataMiddleware = async (req, res, next) => {
 app.get('*', initialDataMiddleware);
 
 app.get('*', (req, res) => {
+  const sheet = new ServerStyleSheet();
+  const bundle = renderToString(sheet.collectStyles(<App />));
+  const styleTags = sheet.getStyleTags();
   if (!paths) {
     return res.status(404).send('no');
   }
   return res.render('index', {
     bundleSrc: paths['main.js'],
+    bundle,
+    styleTags,
   });
 });
 
