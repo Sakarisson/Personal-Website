@@ -22,5 +22,5 @@ html
     if styleTags
       != styleTags
     if !dev
-      script!='var initialData=' + JSON.stringify(initialData)
+      script!='window.__INITIAL_DATA__=' + JSON.stringify(initialData)
       script(src=`${bundleSrc}` defer)
