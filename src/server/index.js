@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
-require('dotenv').config();
+/* eslint-disable import/first */
+import dotenv from 'dotenv';
 
-const app = require('./app');
+dotenv.config();
+
+import app from './app';
 
 let port = process.env.SERVER_PORT;
 
@@ -10,4 +13,7 @@ if (port == null) {
   port = 80;
 }
 
-app().then(initialized => initialized.listen(port, () => console.log(`Server listening on port ${port}`)));
+app()
+  .then(initialized => (
+    initialized.listen(port, () => console.log(`Server listening on port ${port}`))
+  ));

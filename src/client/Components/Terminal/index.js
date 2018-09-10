@@ -5,15 +5,11 @@ import Buttons from './Buttons';
 import ScreenText from './ScreenText';
 
 const Terminal = styled.div`
-  width: 550px;
+  width: 100%;
+  height: 100%;
   border: 1px solid #646568;
   margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  grid-area: middle;
   @media (max-width: 570px) {
     width: 100%;
   }
@@ -22,7 +18,7 @@ const Terminal = styled.div`
 const Menu = styled.div`
   width: 100%;
   box-sizing: border-box;
-  height: 25px;
+  height: 20%;
   background-color: #151515;
   margin: 0 auto;
 `;
@@ -30,9 +26,8 @@ const Menu = styled.div`
 const Screen = styled.div`
   background-color: #151515;
   box-sizing: border-box;
-  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
 `;
 
 export default () => (

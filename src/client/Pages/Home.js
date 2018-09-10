@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Terminal from 'Components/Terminal';
 import Footer from 'Components/Footer';
 
 const Home = () => (
-  <div>
+  <Fragment>
     <Terminal />
     <Footer />
-  </div>
+  </Fragment>
 );
 
 export default Home;
